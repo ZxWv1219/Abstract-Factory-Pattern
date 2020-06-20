@@ -3,7 +3,7 @@ package com.factory;
 import com.fixings.IFixings;
 import com.fixings.LiLeiFixings;
 import com.rice.noodle.IRiceNoodle;
-import com.rice.noodle.ZhangWuJiRiceNoodle;
+import com.rice.noodle.RoundRiceNoodle;
 
 /**
  * 张学友的螺蛳粉厂
@@ -20,6 +20,6 @@ public class JackyRSRNFactory implements IRSRNFactory {
 
     @Override
     public IRiceNoodle createRiceNoodle() {
-        return new ZhangWuJiRiceNoodle();
+        return new RoundRiceNoodle();
     }
 }

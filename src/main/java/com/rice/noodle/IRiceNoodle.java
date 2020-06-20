@@ -7,5 +7,10 @@ package com.rice.noodle;
  */
 public interface IRiceNoodle {
 
-    String sayHello();
+    /**
+     * 生产
+     *
+     * @return
+     */
+    String produce();
 }
