@@ -1,8 +1,7 @@
 package com;
 
 import com.factory.*;
-import com.infrasturcture.DomainConst;
-import com.rice.noodle.IRiceNoodle;
+import com.producer.RSRNFactoryProducer;
 
 /**
  * @author Zx
@@ -11,16 +10,28 @@ import com.rice.noodle.IRiceNoodle;
  */
 public class RunAbstractFactory {
     public static void main(String[] args) {
-        abstractFactory(new JackyRSRNFactory());
-        abstractFactory(new JayRSRNFactory());
+        System.out.println("+++++++++++++++++++abstractFactory+++++++++++++++++++");
+        IRSRNFactory jackyRSRNFactory = new JackyRSRNFactory();
+        jackyRSRNFactory.createRiceNoodle().produce();
+        jackyRSRNFactory.createFixings().produceFixings();
+
+        IRSRNFactory jayRSRNFactory = new JayRSRNFactory();
+        jayRSRNFactory.createRiceNoodle().produce();
+        jayRSRNFactory.createFixings().produceFixings();
+
+
+        System.out.println("+++++++++++++++++++FactoryProducer+++++++++++++++++++");
+        IRSRNFactory jayFactory = RSRNFactoryProducer.createRSRNFactory("周杰伦");
+        IRSRNFactory jackyFactory = RSRNFactoryProducer.createRSRNFactory("张学友");
+        if (jayFactory != null) {
+            jayFactory.createRiceNoodle().produce();
+            jayFactory.createFixings().produceFixings();
+        }
+        if (jackyFactory != null) {
+            jackyFactory.createRiceNoodle().produce();
+            jackyFactory.createFixings().produceFixings();
+        }
+
     }
 
-    /**
-     * 抽象工厂模式
-     */
-    private static void abstractFactory(IRSRNFactory irsrnFactory) {
-        System.out.println("+++++++++++++++++++abstractFactory+++++++++++++++++++");
-        System.out.println(irsrnFactory.createFixings().produceFixings());
-        System.out.println(irsrnFactory.createRiceNoodle().produce());
-    }
 }

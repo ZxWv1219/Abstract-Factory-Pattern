@@ -6,8 +6,6 @@ package com.infrasturcture;
  * @modified By:
  */
 public class DomainConst {
-    public static final String XIAO_ZHANG = "0";
-    public static final String FENG_ZHANG = "1";
     /**
      * 切粉
      */
@@ -16,4 +14,6 @@ public class DomainConst {
      * 榨粉
      */
     public static final String NOODLE_ROUND = "2";
+
+
 }

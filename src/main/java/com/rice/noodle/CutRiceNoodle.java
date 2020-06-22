@@ -10,6 +10,7 @@ package com.rice.noodle;
 public class CutRiceNoodle implements IRiceNoodle {
     @Override
     public String produce() {
+        System.out.println("切粉");
         return "切粉";
     }
 }

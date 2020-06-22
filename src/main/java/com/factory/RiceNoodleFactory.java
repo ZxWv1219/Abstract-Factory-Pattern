@@ -14,38 +14,36 @@ import java.util.Map;
  * @modified By:
  */
 public class RiceNoodleFactory {
-    public static IRiceNoodle createRiceNoodle(String type) {
-        IRiceNoodle riceNoodle = null;
-        switch (type) {
-            case DomainConst.NOODLE_CUT:
-                riceNoodle = new CutRiceNoodle();
-                break;
-            case DomainConst.NOODLE_ROUND:
-                riceNoodle = new RoundRiceNoodle();
-                break;
-            default:
-                break;
-        }
-        return riceNoodle;
+//    public static IRiceNoodle createRiceNoodle(String type) {
+//        IRiceNoodle riceNoodle = null;
+//        switch (type) {
+//            case DomainConst.NOODLE_CUT:
+//                riceNoodle = new CutRiceNoodle();
+//                break;
+//            case DomainConst.NOODLE_ROUND:
+//                riceNoodle = new RoundRiceNoodle();
+//                break;
+//            default:
+//                break;
+//        }
+//        return riceNoodle;
+//    }
+
+
+    private static final Map<String, Class<? extends IRiceNoodle>> map = new HashMap<>();
+
+    static {
+        map.put(DomainConst.NOODLE_ROUND, RoundRiceNoodle.class);
+        map.put(DomainConst.NOODLE_CUT, CutRiceNoodle.class);
     }
 
-//
-//    private static final Map<String, Class<? extends IRiceNoodle>> map = new HashMap<>();
-//
-//    static {
-//        map.put(DomainConst.FENG_ZHANG, RoundRiceNoodle.class);
-//        map.put(DomainConst.XIAO_ZHANG, CutRiceNoodle.class);
-//    }
-//
-//    public static IRiceNoodle createRiceNoodle(String type) {
-//        //获取类
-//        Class clazz = map.get(type);
-//        try {
-//            //返回类实例
-//            return (IRiceNoodle) Class.forName(clazz.getName()).newInstance();
-//        } catch (Exception ex) {
-//            System.out.println(ex.getMessage());
-//            return null;
-//        }
-//    }
+    public static IRiceNoodle createRiceNoodle(String type) {
+        try {
+            //返回类实例
+            return map.get(type).newInstance();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            return null;
+        }
+    }
 }

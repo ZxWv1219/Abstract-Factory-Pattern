@@ -11,16 +11,9 @@ import com.rice.noodle.IRiceNoodle;
  */
 public class RunSimpleFactory {
     public static void main(String[] args) {
-        simpleFactory(DomainConst.NOODLE_CUT);
-    }
-
-    /**
-     * 简单工厂
-     */
-    private static void simpleFactory(String type) {
         System.out.println("+++++++++++++++++++simpleFactory+++++++++++++++++++");
-        IRiceNoodle riceNoodle = RiceNoodleFactory.createRiceNoodle(type);
+        IRiceNoodle riceNoodle = RiceNoodleFactory.createRiceNoodle(DomainConst.NOODLE_CUT);
         if (riceNoodle != null)
-            System.out.println(riceNoodle.produce());
+            riceNoodle.produce();
     }
 }

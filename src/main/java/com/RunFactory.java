@@ -2,6 +2,7 @@ package com;
 
 import com.factory.*;
 import com.infrasturcture.DomainConst;
+import com.producer.RiceNoodleFactoryProducer;
 import com.rice.noodle.IRiceNoodle;
 
 /**
@@ -11,15 +12,16 @@ import com.rice.noodle.IRiceNoodle;
  */
 public class RunFactory {
     public static void main(String[] args) {
-        factory(new CutRiceNoodleFactory());
-        factory(new RoundRiceNoodleFactory());
-    }
 
-    /**
-     * 工厂模式
-     */
-    private static void factory(IRiceNoodleFactory riceNoodleFactory) {
         System.out.println("+++++++++++++++++++factory+++++++++++++++++++");
-        System.out.println(riceNoodleFactory.createRiceNoodle().produce());
+        IRiceNoodleFactory riceNoodleFactory = new CutRiceNoodleFactory();
+        riceNoodleFactory.createRiceNoodle().produce();
+
+
+        IRiceNoodleFactory cutFactory = RiceNoodleFactoryProducer.createRiceNoodle(DomainConst.NOODLE_CUT);
+        IRiceNoodleFactory roundFactory = RiceNoodleFactoryProducer.createRiceNoodle(DomainConst.NOODLE_ROUND);
+        System.out.println("+++++++++++++++++++FactoryProducer+++++++++++++++++++");
+        if (cutFactory != null) cutFactory.createRiceNoodle().produce();
+        if (roundFactory != null) roundFactory.createRiceNoodle().produce();
     }
 }

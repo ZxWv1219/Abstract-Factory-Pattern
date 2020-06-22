@@ -8,6 +8,7 @@ package com.fixings;
 public class LiLeiFixings implements IFixings {
     @Override
     public String produceFixings() {
+        System.out.println("李雷做的配菜");
         return "李雷做的配菜";
     }
 }
